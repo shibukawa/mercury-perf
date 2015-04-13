@@ -110,12 +110,12 @@ BenchmarkRunner.prototype._runTest = function(suite, testFunction, prepareReturn
     var syncTime = endTime - startTime;
 
     var startTime = now();
-    setTimeout(function () {
-        setTimeout(function () {
+    window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
             var endTime = now();
             callback(syncTime, endTime - startTime);
-        }, 0)
-    }, 0);
+        })
+    });
 }
 
 function BenchmarkState(suites) {
